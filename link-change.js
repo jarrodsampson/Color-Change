@@ -49,7 +49,7 @@
 		}
 		
 	}
-	
+	 
 	var methodsCallBack = {
 		
 			cssApplications: function(settings)

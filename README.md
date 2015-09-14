@@ -33,8 +33,8 @@ A new way to color. Designed by [planlodge](https://github.com/planlodge).
 	      });
 	    </script>
 
-   </body>
-   </html>
+   	</body>
+   	</html>
 
 
 ## License

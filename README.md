@@ -15,27 +15,28 @@ A new way to color. Designed by [planlodge](https://github.com/planlodge).
     <!DOCTYPE html>
     <html lang="en-US">
     <head>
-	    <title>Your Page</title>
-	    <meta charset="utf-8">
+        <title>Your Page</title>
+        <meta charset="utf-8">
     </head>
     <body>
-    
+
     <!-- your html code here -->
     <section>
       <p class="yourSelector">Lorem ipsum dolor sit amet, 
       consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. </p>
     </section>
 
-	    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-	    <script src="libs/color-change.min.js"></script>
-	    <script>
-	      $(function(){
-		      $(".yourSelector").colorChange({color: blue});
-	      });
-	    </script>
+        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="libs/color-change.min.js"></script>
+        <script>
+          $(function(){
+              $(".yourSelector").colorChange({firefox: "#800000", chrome: "#000000"});
+          });
+        </script>
 
-   	</body>
-   	</html>
+    </body>
+    </html>
+
 
 
 ## License

@@ -27,38 +27,36 @@
     'use strict';
 
     var methods = {
+
         init: function(options) {
             var defaults = {
-                color:              "#556b2f",
-                backgroundColor:    "none",
-                fontSizing:         14,
-                width:              methods.getWidth(),
-                'effect':           "fade",
-                fadeIn:             2200,
-                fadeOut:            200
+                color:              "#556b2f",          // color code for text coloring
+                backgroundColor:    "none",             // background color for text
+                fontSizing:         24,                 // default font size
+                width:              methods.getWidth(), // get width of browser
+                'effect':           "fade",             // type of effect
+                fadeIn:             2200,               // transition intro speed
+                fadeOut:            200                 // transition exit speed
             };
 
+            
+
             // default settings
-            var settings = $.extend(defaults, options);
+            options = $.extend(defaults, options);
 
             return this.each(function(){
 
-                // element
                 var el = $(this);
 
-                // apply css
-                el.css({
-                    color:              settings.color,
-                    backgroundColor:    settings.backgroundColor,
-                    fontSize:           settings.fontSizing,
-                    width:              settings.width
-                });
 
+                 el.css({
+                    color:              options.color,
+                    backgroundColor:    options.backgroundColor,
+                    fontSize:           options.fontSizing,
+                    width:              options.width
+                 });
 
-                // apply animation
-                el.hide().fadeIn(settings.fadeIn);
-
-
+                 el.hide().fadeIn(options.fadeIn);
             });
 
         },
@@ -68,7 +66,6 @@
         },
         checkeffect: function(effect) {
             if (effect == 'fade') {
-                $(this).hide().fadeIn(1900);
                 console.log('fading');
             } else {
                 console.log('no effect');

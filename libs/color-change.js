@@ -62,17 +62,17 @@
 
     $.fn.colorChange = function(options) {
 
+        var defaults = {
+                color:              "#556b2f",
+                backgroundColor:        "none",
+                fontSizing:             14,
+                width:              methods.getWidth(),
+                'effect':           "fade"
+        };
+
 
         // default settings
-        var settings = $.extend({
-
-                color: 				"#556b2f",
-                backgroundColor: 		"none",
-                fontSizing: 			14,
-                width: 				methods.getWidth(),
-                'effect': 			"fade"
-            },
-            options);
+        var settings = $.extend(defaults, options);
 
         $(this).css({
             color: 				settings.color,

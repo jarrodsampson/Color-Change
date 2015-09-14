@@ -1,7 +1,7 @@
 /**
- * link-change.js v1.1
+ * color-change.js v1.1
  *
- * Copyright (c) 2015 Jarrod Sampson (gthmb)
+ * Copyright (c) 2015 Planlodge (http://www.planlodge.com)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -49,8 +49,8 @@
 
         var defaults = {
                 color:              "#556b2f",
-                backgroundColor:        "none",
-                fontSizing:             14,
+                backgroundColor:    "none",
+                fontSizing:         14,
                 width:              methods.getWidth(),
                 'effect':           "fade",
                 fadeIn:             2200,
@@ -71,8 +71,8 @@
             // apply css
             el.css({
                 color:              settings.color,
-                backgroundColor:            settings.backgroundColor,
-                fontSize:               settings.fontSizing,
+                backgroundColor:    settings.backgroundColor,
+                fontSize:           settings.fontSizing,
                 width:              settings.width
             });
 

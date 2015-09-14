@@ -60,7 +60,7 @@
 
     }
 
-    $.fn.container = function(options) {
+    $.fn.colorChange = function(options) {
 
 
         // default settings

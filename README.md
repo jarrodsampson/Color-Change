@@ -22,7 +22,8 @@ A new way to color. Designed by [planlodge](https://github.com/planlodge).
     
     <!-- your html code here -->
     <section>
-      <p class="yourSelector">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. </p>
+      <p class="yourSelector">Lorem ipsum dolor sit amet, 
+      consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. </p>
     </section>
 
 	    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>

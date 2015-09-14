@@ -26,43 +26,87 @@
 
     'use strict';
 
+    var color;
+
     var methods = {
 
         init: function(options) {
+
             var defaults = {
-                color:              "#556b2f",          // color code for text coloring
                 backgroundColor:    "none",             // background color for text
                 fontSizing:         24,                 // default font size
                 width:              methods.getWidth(), // get width of browser
                 'effect':           "fade",             // type of effect
                 fadeIn:             2200,               // transition intro speed
-                fadeOut:            200                 // transition exit speed
+                fadeOut:            200,               // transition exit speed
+                firefox:            "#565656",          // firefox
+                chrome:             "#ff0000",          // chrome 
+                safari:             "#565656",          // safari
+                ie:                 "#992882",          // ie
+                opera:              "#565656"           // opera
             };
-
-            
 
             // default settings
             options = $.extend(defaults, options);
 
+            methods.determineBrowser(defaults['firefox'], defaults['chrome'], defaults['safari'], defaults['ie'], defaults['opera']);
+
             return this.each(function(){
+
 
                 var el = $(this);
 
-
                  el.css({
-                    color:              options.color,
+                    color:              color,
                     backgroundColor:    options.backgroundColor,
                     fontSize:           options.fontSizing,
                     width:              options.width
                  });
 
                  el.hide().fadeIn(options.fadeIn);
+                 
             });
 
         },
         getWidth: function() {
             var w = window.innerWidth;
             return w;
+        },
+        determineBrowser: function(firefoxColor, chromeColor, safariColor, ieColor, operaColor) {
+
+                var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+                    // Opera 8.0+ (UA detection to detect Blink/v8-powered Opera)
+                var isFirefox = typeof InstallTrigger !== 'undefined';   // Firefox 1.0+
+                var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+                    // At least Safari 3+: "[object HTMLElementConstructor]"
+                var isChrome = !!window.chrome && !isOpera;              // Chrome 1+
+                var isIE = /*@cc_on!@*/false || !!document.documentMode; // At least IE6
+
+                if (isOpera == true)
+                {
+                    console.log("Opera");
+                    methods.crossBrowserColors("Opera", operaColor);
+                }
+                else if (isFirefox == true)
+                {
+                    console.log("Firefox");
+                    methods.crossBrowserColors("Firefox", firefoxColor);
+                }
+                else if (isSafari == true)
+                {
+                    console.log("Safari");
+                    methods.crossBrowserColors("Safari", safariColor);
+                }
+                else if (isChrome == true)
+                {
+                    console.log("Chrome");
+                    methods.crossBrowserColors("Chrome", chromeColor);
+                }
+                else if (isIE == true)
+                {
+                    console.log("IE");
+                    methods.crossBrowserColors("IE", ieColor);
+                }
         },
         checkeffect: function(effect) {
             if (effect == 'fade') {
@@ -71,8 +115,12 @@
                 console.log('no effect');
                 return false;
             }
-        }
+        },
+        crossBrowserColors: function(browser, colorBrowser) {
+            var el = $(this);
 
+            color = colorBrowser;
+        }
     }
 
     // function method

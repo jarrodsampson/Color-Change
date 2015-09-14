@@ -27,7 +27,41 @@
     'use strict';
 
     var methods = {
+        init: function(options) {
+            var defaults = {
+                color:              "#556b2f",
+                backgroundColor:    "none",
+                fontSizing:         14,
+                width:              methods.getWidth(),
+                'effect':           "fade",
+                fadeIn:             2200,
+                fadeOut:            200
+            };
 
+            // default settings
+            var settings = $.extend(defaults, options);
+
+            return this.each(function(){
+
+                // element
+                var el = $(this);
+
+                // apply css
+                el.css({
+                    color:              settings.color,
+                    backgroundColor:    settings.backgroundColor,
+                    fontSize:           settings.fontSizing,
+                    width:              settings.width
+                });
+
+
+                // apply animation
+                el.hide().fadeIn(settings.fadeIn);
+
+
+            });
+
+        },
         getWidth: function() {
             var w = window.innerWidth;
             return w;
@@ -45,44 +79,15 @@
     }
 
     // function method
-    $.fn.colorChange = function(options) {
+    $.fn.colorChange = function(method) {
 
-        var defaults = {
-                color:              "#556b2f",
-                backgroundColor:    "none",
-                fontSizing:         14,
-                width:              methods.getWidth(),
-                'effect':           "fade",
-                fadeIn:             2200,
-                fadeOut:            200
-        };
-
-
-        // default settings
-        var settings = $.extend(defaults, options);
-
-        
-
-        return this.each(function(){
-
-            // element
-            var el = $(this);
-
-            // apply css
-            el.css({
-                color:              settings.color,
-                backgroundColor:    settings.backgroundColor,
-                fontSize:           settings.fontSizing,
-                width:              settings.width
-            });
-
-
-            // apply animation
-            el.hide().fadeIn(settings.fadeIn);
-
-
-        });
-
+        if (methods[method]) {
+            return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+        } else if (typeof method === "object" || !method) {
+            return methods.init.apply(this, arguments);
+        } else {
+            $.error("Method " + method + " does not exist");
+        }
     };
 
 

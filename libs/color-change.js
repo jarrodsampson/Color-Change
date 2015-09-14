@@ -44,22 +44,7 @@
 
     }
 
-    var methodsCallBack = {
-
-        cssApplications: function(settings) {
-            $(this).css({
-                color: 				settings.color,
-                backgroundColor: 		settings.backgroundColor,
-                fontSize: 			settings.fontSizing,
-                width: 				settings.width
-            });
-        },
-        effects: function() {
-            $(this).hide().fadeIn(1900);
-        }
-
-    }
-
+    // function method
     $.fn.colorChange = function(options) {
 
         var defaults = {
@@ -67,24 +52,36 @@
                 backgroundColor:        "none",
                 fontSizing:             14,
                 width:              methods.getWidth(),
-                'effect':           "fade"
+                'effect':           "fade",
+                fadeIn:             2200,
+                fadeOut:            200
         };
 
 
         // default settings
         var settings = $.extend(defaults, options);
 
-        $(this).css({
-            color: 				settings.color,
-            backgroundColor: 			settings.backgroundColor,
-            fontSize: 				settings.fontSizing,
-            width: 				settings.width
+        
+
+        return this.each(function(){
+
+            // element
+            var el = $(this);
+
+            // apply css
+            el.css({
+                color:              settings.color,
+                backgroundColor:            settings.backgroundColor,
+                fontSize:               settings.fontSizing,
+                width:              settings.width
+            });
+
+
+            // apply animation
+            el.hide().fadeIn(settings.fadeIn);
+
+
         });
-
-
-        $(this).hide().fadeIn(1900);
-
-        return this;
 
     };
 

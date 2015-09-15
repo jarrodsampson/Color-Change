@@ -12,11 +12,15 @@
   consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. </p>
 </section>
 
-    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="libs/color-change.min.js"></script>
     <script>
       $(function(){
-          $(".yourSelector").colorChange({firefox: "#800000", chrome: "#000000"});
+          $(".yourSelector").colorChange({
+            firefox: "#800000", 
+            chrome: "#000000", 
+            effect: true
+          });
       });
     </script>
 

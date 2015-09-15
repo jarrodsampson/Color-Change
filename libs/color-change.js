@@ -36,9 +36,9 @@
                 backgroundColor:    "none",             // background color for text
                 fontSizing:         24,                 // default font size
                 width:              methods.getWidth(), // get width of browser
-                'effect':           "fade",             // type of effect
+                'effect':           true,               // turn effect on or off
                 fadeIn:             2200,               // transition intro speed
-                fadeOut:            200,               // transition exit speed
+                fadeOut:            200,                // transition exit speed
                 firefox:            "#565656",          // firefox
                 chrome:             "#ff0000",          // chrome 
                 safari:             "#565656",          // safari
@@ -49,7 +49,14 @@
             // default settings
             options = $.extend(defaults, options);
 
-            methods.determineBrowser(defaults['firefox'], defaults['chrome'], defaults['safari'], defaults['ie'], defaults['opera']);
+            // pass in params to determine brwoser color
+            methods.determineBrowser(
+                defaults['firefox'], 
+                defaults['chrome'], 
+                defaults['safari'], 
+                defaults['ie'], 
+                defaults['opera']
+            );
 
             return this.each(function(){
 
@@ -63,7 +70,19 @@
                     width:              options.width
                  });
 
-                 el.hide().fadeIn(options.fadeIn);
+                 // effects
+                 if (defaults['effect'] == true)
+                 {
+                    el.hide().fadeIn(options.fadeIn);
+                 }
+                 
+
+                 // resizing method to re-calculate width
+                 $( window ).resize(function() {
+                    el.css({
+                        width:          methods.getWidth()
+                    });
+                 });
                  
             });
 
@@ -107,14 +126,6 @@
                     console.log("IE");
                     methods.crossBrowserColors("IE", ieColor);
                 }
-        },
-        checkeffect: function(effect) {
-            if (effect == 'fade') {
-                console.log('fading');
-            } else {
-                console.log('no effect');
-                return false;
-            }
         },
         crossBrowserColors: function(browser, colorBrowser) {
             var el = $(this);
